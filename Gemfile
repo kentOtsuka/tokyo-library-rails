@@ -37,6 +37,9 @@ gem "bootsnap", require: false
 gem "rack-cors"
 gem 'net-smtp'
 
+# データ作成
+gem 'seed-fu'
+
 group :development, :test do
   #Debugger
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
