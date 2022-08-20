@@ -5,7 +5,7 @@ i = 1
 
 csv.each do |line|
   id = i
-  name = line[1]
+  name = line[0]
   homepage = line[1]
   i += 1
 
