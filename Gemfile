@@ -40,6 +40,9 @@ gem 'net-smtp'
 # データ作成
 gem 'seed-fu'
 
+# User作成
+gem 'sorcery'
+
 group :development, :test do
   #Debugger
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
