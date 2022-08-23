@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_08_21_224140) do
     t.bigint "service_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["library_id", "service_id"], name: "index_libraries_services_on_library_id_and_service_id", unique: true
     t.index ["library_id"], name: "index_libraries_services_on_library_id"
     t.index ["service_id"], name: "index_libraries_services_on_service_id"
   end

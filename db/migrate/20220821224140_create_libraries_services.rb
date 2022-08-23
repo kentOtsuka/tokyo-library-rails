@@ -6,5 +6,6 @@ class CreateLibrariesServices < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :libraries_services, [:library_id, :service_id], unique: true
   end
 end
