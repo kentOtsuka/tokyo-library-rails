@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 2022_08_22_062639) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "library_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["library_id"], name: "index_bookmarks_on_library_id"
+    t.index ["user_id", "library_id"], name: "index_bookmarks_on_user_id_and_library_id", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
   create_table "libraries", force: :cascade do |t|
     t.bigint "administration_id"
     t.string "name"
@@ -40,6 +50,18 @@ ActiveRecord::Schema.define(version: 2022_08_22_062639) do
     t.decimal "lng", precision: 11, scale: 8
     t.index ["administration_id"], name: "index_libraries_on_administration_id"
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "crypted_password"
+    t.string "salt"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "bookmarks", "libraries"
+  add_foreign_key "bookmarks", "users"
 
   create_table "libraries_services", force: :cascade do |t|
     t.bigint "library_id", null: false
