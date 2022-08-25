@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_21_224140) do
+
+ActiveRecord::Schema.define(version: 2022_08_22_062639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +37,8 @@ ActiveRecord::Schema.define(version: 2022_08_21_224140) do
     t.integer "seats"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "lat", precision: 11, scale: 8
+    t.decimal "lng", precision: 11, scale: 8
     t.index ["administration_id"], name: "index_libraries_on_administration_id"
   end
 
