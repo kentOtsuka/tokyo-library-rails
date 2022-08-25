@@ -9,7 +9,7 @@ csv.each do |line|
   library_id = line[1]
   i += 1
 
-  LibraryService.seed(:id) do |s|
+  LibrariesService.seed(:id) do |s|
     s.id = id
     s.service_id = service_id
     s.library_id = library_id
