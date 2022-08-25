@@ -5,11 +5,11 @@ i = 1
 
 csv.each do |line|
   id = i
-  name = line[0]
+  body = line[0]
   i += 1
 
   Service.seed(:id) do |s|
     s.id = id
-    s.name = name
+    s.body = body
   end
 end
