@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_25_021607) do
+ActiveRecord::Schema.define(version: 2022_08_22_062639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2022_08_25_021607) do
     t.integer "seats"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "lat", precision: 11, scale: 8
+    t.decimal "lng", precision: 11, scale: 8
     t.index ["administration_id"], name: "index_libraries_on_administration_id"
   end
 
@@ -60,4 +62,23 @@ ActiveRecord::Schema.define(version: 2022_08_25_021607) do
 
   add_foreign_key "bookmarks", "libraries"
   add_foreign_key "bookmarks", "users"
+
+  create_table "libraries_services", force: :cascade do |t|
+    t.bigint "library_id", null: false
+    t.bigint "service_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["library_id", "service_id"], name: "index_libraries_services_on_library_id_and_service_id", unique: true
+    t.index ["library_id"], name: "index_libraries_services_on_library_id"
+    t.index ["service_id"], name: "index_libraries_services_on_service_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "libraries_services", "libraries"
+  add_foreign_key "libraries_services", "services"
 end

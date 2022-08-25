@@ -16,6 +16,8 @@ csv.each do |line|
   closed_body_first = line[8]
   closed_body_second = line[9]
   seats = line[10]
+  lat = line[11]
+  lng = line[12]
   i += 1
 
   Library.seed(:id) do |s|
@@ -31,5 +33,7 @@ csv.each do |line|
     s.closed_body_first = closed_body_first
     s.closed_body_second = closed_body_second
     s.seats = seats
+    s.lat = lat
+    s.lng = lng
   end
 end
