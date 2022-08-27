@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'tokyo-library-app.web.app/'
+    origins 'tokyo-library-app.web.app'
     # origins 'localhost:8080'
 
     resource '*',
