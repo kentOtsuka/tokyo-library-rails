@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_22_062639) do
+ActiveRecord::Schema.define(version: 2022_08_25_021607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,18 +51,6 @@ ActiveRecord::Schema.define(version: 2022_08_22_062639) do
     t.index ["administration_id"], name: "index_libraries_on_administration_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "crypted_password"
-    t.string "salt"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-  end
-
-  add_foreign_key "bookmarks", "libraries"
-  add_foreign_key "bookmarks", "users"
-
   create_table "libraries_services", force: :cascade do |t|
     t.bigint "library_id", null: false
     t.bigint "service_id", null: false
@@ -79,6 +67,17 @@ ActiveRecord::Schema.define(version: 2022_08_22_062639) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "crypted_password"
+    t.string "salt"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "bookmarks", "libraries"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "libraries_services", "libraries"
   add_foreign_key "libraries_services", "services"
 end
