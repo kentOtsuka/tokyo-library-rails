@@ -24,4 +24,16 @@ class Api::V1::LibrariesController < ApplicationController
     end
     render json: { libraries: response }
   end
+
+  def update
+    @library = Library.find(params[:id])
+    if @library.update(library_param)
+    else
+    end
+  end
+
+  private
+    def library_params
+      params.require(:library).permit(:clean, :comfort, :silent, :desk, :crowd)
+    end
 end
