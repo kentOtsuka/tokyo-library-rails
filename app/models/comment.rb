@@ -1,9 +1,9 @@
-class Bookmark < ApplicationRecord
+class Comment < ApplicationRecord
   # アソシエーション設定
   belongs_to :user
   belongs_to :library
 
   #バリデーション設定
-  validates :user_id, uniqueness: { scope: :library_id}
+  validates :body, presence: true, length: { maximum: 65_535 }
 
 end
