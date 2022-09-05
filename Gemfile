@@ -36,6 +36,8 @@ gem "bootsnap", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem "rack-cors"
 gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
 
 # データ作成
 gem 'seed-fu'
@@ -49,6 +51,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
+  gem 'pry-nav'
 
   # Code analyse
   gem 'rubocop', require: false
