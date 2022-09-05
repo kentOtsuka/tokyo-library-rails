@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   # 以下アソシエーション設定
-  has_many :bookmarks, dependent: :destroy
-  has_many :bookmark_libraries, through: :bookmarks, source: :library
+  has_many :comments, dependent: :destroy
 
   # 以下バリデーション
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze #変数に正規表現を代入（emailのformatで使用）
