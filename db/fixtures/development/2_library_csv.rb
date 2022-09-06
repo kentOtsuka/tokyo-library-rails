@@ -18,6 +18,7 @@ csv.each do |line|
   seats = line[10]
   lat = line[11]
   lng = line[12]
+  homepage = line[13]
   i += 1
 
   Library.seed(:id) do |s|
@@ -35,5 +36,6 @@ csv.each do |line|
     s.seats = seats
     s.lat = lat
     s.lng = lng
+    s.homepage = homepage
   end
 end
