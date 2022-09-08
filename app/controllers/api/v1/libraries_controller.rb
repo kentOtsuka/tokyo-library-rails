@@ -5,7 +5,7 @@ class Api::V1::LibrariesController < ApplicationController
     response = []
     libraries.each do |l|
       response << {
-        id: l.id
+        id: l.id,
         title: l.name,
         address: l.administration.name + l.address,
         open: l.open_time.strftime("%-H:%M"),
