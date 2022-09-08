@@ -22,15 +22,8 @@ class Api::V1::ServicesController < ApplicationController
     end
     libraries.each do |l|
       response << {
+        id: l.id,
         title: l.name,
-        address: l.administration.name + l.address,
-        open: l.open_time.strftime("%-H:%M"),
-        close: l.close_time.strftime("%-H:%M"),
-        seats: l.seats,
-        opening_details: l.opening_details,
-        close_date_first: l.closed_body_first,
-        close_date_second: l.closed_body_second,
-        services: l.services,
         position: {
           lat: l.lat.to_f,
           lng: l.lng.to_f

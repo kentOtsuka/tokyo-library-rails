@@ -7,20 +7,6 @@ class Api::V1::LibrariesController < ApplicationController
       response << {
         id: l.id,
         title: l.name,
-        address: l.administration.name + l.address,
-        open: l.open_time.strftime("%-H:%M"),
-        close: l.close_time.strftime("%-H:%M"),
-        seats: l.seats,
-        opening_details: l.opening_details,
-        close_date_first: l.closed_body_first,
-        close_date_second: l.closed_body_second,
-        services: l.services,
-        comfort: l.comfort,
-        clean: l.clean,
-        silent: l.silent,
-        desk: l.desk,
-        crowd: l.crowd,
-        quantity: l.quantity,
         position: {
           lat: l.lat.to_f,
           lng: l.lng.to_f
@@ -34,9 +20,38 @@ class Api::V1::LibrariesController < ApplicationController
     render json: { libraries: response }
   end
 
+  def show
+    library = Library.find(params[:id])
+    response = {
+      id: library.id,
+      title: library.name,
+      homepage: library.homepage,
+      address: library.administration.name + library.address,
+      open: library.open_time.strftime("%-H:%M"),
+      close: library.close_time.strftime("%-H:%M"),
+      seats: library.seats,
+      opening_details: library.opening_details,
+      close_date_first: library.closed_body_first,
+      close_date_second: library.closed_body_second,
+      services: library.services,
+      comfort: library.comfort,
+      clean: library.clean,
+      silent: library.silent,
+      desk: library.desk,
+      crowd: library.crowd,
+      quantity: library.quantity,
+      position: {
+        lat: library.lat.to_f,
+        lng: library.lng.to_f
+      },
+    }
+
+    render json: { library: response }
+  end
+
   def update
     library = Library.find(params[:id])
-  
+
     if library
       library.update(quantity: library.quantity + 1)
       library.update(comfort: library.comfort + params[:library][:comfort].to_i)

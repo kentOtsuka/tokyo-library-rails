@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_06_153718) do
+ActiveRecord::Schema.define(version: 2022_09_07_114152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,12 @@ ActiveRecord::Schema.define(version: 2022_09_06_153718) do
     t.decimal "lat", precision: 11, scale: 8
     t.decimal "lng", precision: 11, scale: 8
     t.string "homepage"
+    t.integer "clean", default: 0
+    t.integer "comfort", default: 0
+    t.integer "silent", default: 0
+    t.integer "desk", default: 0
+    t.integer "crowd", default: 0
+    t.integer "quantity", default: 0
     t.index ["administration_id"], name: "index_libraries_on_administration_id"
   end
 
