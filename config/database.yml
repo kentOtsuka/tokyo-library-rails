@@ -84,3 +84,4 @@ production:
   database: tokyo_library_rails_production
   username: tokyo_library_rails
   password: <%= ENV["TOKYO_LIBRARY_RAILS_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
