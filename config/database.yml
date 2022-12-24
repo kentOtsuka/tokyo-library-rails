@@ -81,7 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: tokyo_library_rails_production
-  username: tokyo_library_rails
+  database: clc1joq53009mbequc2e94ilh
+  username: clc1joq51009kbequ95obgzh3
   password: <%= ENV["TOKYO_LIBRARY_RAILS_DATABASE_PASSWORD"] %>
   url: <%= ENV['DATABASE_URL'] %>
